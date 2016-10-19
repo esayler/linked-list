@@ -17,26 +17,43 @@ body {
 
 .box {
   width: 90%;
-  height: 15vh;
+  height: 125px;
   border: 2px solid #607d8b;
   background-color: #fff;
-  margin: 5px;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
 }
 
 .box a {
   text-decoration: none;
-  border-bottom: 2px solid #ffc107;
-  color: #455a64;
+  color: #607d8b;
 }
 
 .box a:hover {
   color: #607d8b;
-  border-bottom: 2px solid #f2f4f4;
+  border-bottom: 4px solid #ffc107;
 }
 
 .box h1 {
   color: #455a64;
   font-weight: 800;
+  font-size: 22px;
+  border-bottom: 4px solid #f2f4f4;
+}
+
+.box p {
+  border-bottom: 4px solid #f2f4f4;
+}
+
+.delete-button {
+  float: right;
+}
+
+div button {
+  font-size: 16px;
+  font-weight: 200;
+  color: #455a64;
 }
 
 .form {
@@ -69,7 +86,7 @@ body {
 
 .logo {
   height: 24px;
-  /*margin: 0 7px 0 7px;*/
+  margin: 0 7px 0 7px;
 }
 
 .title {
