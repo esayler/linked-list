@@ -2,32 +2,57 @@ var count = 0;
 updateCounters();
 var title = $('#title-form');
 var url = $('#url-form');
+
+//$('#create-button').attr('disabled', true);
+$('#clear-button').attr('disabled', true);
+
+function displayError(errorMessage) {
+  $('body').prepend('<p>' + errorMessage + '</p>')
+}
+
 // create bookmark
 // TODO: get user input on click and enter key
 $('#create-button').on('click', function() {
   var titleText = title.val();
   var urlText = url.val();
+  if (inputIsValid()) {
+    title.val('');
+    url.val('');
+    count++;
+    updateCounters();
 
-  title.val('');
-  url.val('');
-  count++;
-  updateCounters();
-
-  $('.list').append('<article class="box" id="bookmark-' + count + '">\
-                       <h1 class="bookmark-title"> ' + titleText + '</h1>\
-                         <a class=".bookmark-url" href="' + urlText + '">\
-                           <p>' + urlText + '</p>\
-                         </a>\
-                       <div class="bookmark-buttons">\
-                          <button type="button" name="Read" class="read-button">\
-                            <p>Read</p>\
-                          </button>\
-                          <button type="button" name="Delete" class="delete-button">\
-                             <p>Delete</p>\
-                          </button>\
-                        </div>\
-                     </article>');
+    $('.list').append('<article class="box" id="bookmark-' + count + '">\
+                         <h1 class="bookmark-title"> ' + titleText + '</h1>\
+                           <a class=".bookmark-url" href="' + urlText + '">\
+                             <p>' + urlText + '</p>\
+                           </a>\
+                         <div class="bookmark-buttons">\
+                            <button type="button" name="Read" class="read-button">\
+                              <p>Read</p>\
+                            </button>\
+                            <button type="button" name="Delete" class="delete-button">\
+                               <p>Delete</p>\
+                            </button>\
+                          </div>\
+                       </article>');
+  }
 });
+
+function inputIsValid() {
+  var titleFormContent = $('#title-form').val()
+  var urlFormContent = $('#url-form').val()
+  if ( titleFormContent.length === 0 || (/^(\s)*$/g).test(titleFormContent) ) {
+    displayError('No title specified');
+    return false;
+  } else if ( urlFormContent.length === 0 || (/^(\s)*$/g).test(urlFormContent) ) {
+    displayError('No URL specified');
+    return false;
+  } else {
+    return true;
+  }
+};
+
+
 
 // each bookmark should have a "Mark as Read" button
 $(document).on('click', '.read-button', function() {
@@ -58,5 +83,9 @@ function updateCounters() {
   $('#num-total').text(numTotal);
   $('#num-read').text(numRead);
   $('#num-unread').text(numUnread);
+
+  if (numRead > 0) {
+    $('#clear-button').attr('disabled', false);
+  }
 
 };
