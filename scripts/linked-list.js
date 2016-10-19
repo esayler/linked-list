@@ -7,7 +7,7 @@ var url = $('#url-form');
 $('#clear-button').attr('disabled', true);
 
 function displayError(errorMessage) {
-  $('body').prepend('<p>' + errorMessage + '</p>')
+  $('.error-msg').text(errorMessage);
 }
 
 // create bookmark
@@ -84,8 +84,13 @@ function updateCounters() {
   $('#num-read').text(numRead);
   $('#num-unread').text(numUnread);
 
+  disableClearButton(numRead);
+};
+
+function disableClearButton (numRead) {
   if (numRead > 0) {
     $('#clear-button').attr('disabled', false);
+  } else {
+    $('#clear-button').attr('disabled', true);
   }
-
-};
+}
