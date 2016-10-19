@@ -1,55 +1,56 @@
-#title-form {
-
-}
-
-#url-form {
-
+body {
+  font-family: 'Open Sans', sans-serif;
 }
 
 #create-button {
-
+  background-color: #ffc107;
+  font-weight: 800;
 }
 
-.bookmark-buttons {
-
+#create-button:hover {
+  background-color: #ffd773;
 }
 
 .box {
-
+  width: 90%;
+  border: 2px solid #607d8b;
 }
 
-.button {
-
+.box a {
+  text-decoration: underline;
+  color: #455a64;
+  text-decoration-color: #ffc107;
 }
 
-.delete-button {
+.box a:hover {
+  text-decoration: underline;
+  color: #607d8b;
+  text-decoration-color: #f2f4f4;
+}
 
+.box h1 {
+  color: #455a64;
+  font-weight: 800;
 }
 
 .form {
+  background-color: #455a64;
+}
 
+.form-input {
+  width: 90%;
 }
 
 .list {
-
+  background-color:#cfd8dc;
 }
 
 .logo {
-
-}
-
-.text {
-
-}
-
-.read-button {
-
+  height: 50px;
 }
 
 .title {
-
-}
-
-.url {
-
+  font-size: 30px;
+  font-weight: 800;
+  color: #fff;
 }
