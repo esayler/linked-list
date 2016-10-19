@@ -27,7 +27,7 @@ $('#create-button').on('click', function() {
 
 // each bookmark should have a "Mark as Read" button
 $(document).on('click', '.read-button', function() {
-  $(this).parents('article').addClass('read');
+  $(this).parents('article').toggleClass('read');
 });
 
 
@@ -35,6 +35,12 @@ $(document).on('click', '.read-button', function() {
 //$('.delete-button').on('click', function() {
 $(document).on('click', '.delete-button', function() {
   $(this).parents('article').remove();
+});
+
+// clear all read bookmarks
+
+$(document).on('click', '#clear-button', function() {
+  $('.list').children('.read').remove()
 });
 
 $('bookmark-title')
