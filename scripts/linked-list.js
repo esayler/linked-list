@@ -6,6 +6,7 @@ $('#create-button').on('click', function() {
     var title = $('#title-form').val();
     var url = $('#url-form').val();
     count++;
+    updateCounters();
 
     $('.list').append('<article class="box" id="bookmark-' + count + '">\
                          <h1 class="bookmark-title"> ' + title + '</h1>\
@@ -52,9 +53,7 @@ function updateCounters() {
   var numUnread = numTotal - numRead;
 
   $('#num-total').text(numTotal);
-
   $('#num-read').text(numRead);
-
   $('#num-unread').text(numUnread);
 
 };
