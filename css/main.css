@@ -4,7 +4,11 @@ body {
 
 #create-button {
   background-color: #ffc107;
+  color: #fff;
   font-weight: 800;
+  font-size: 16px;
+  margin-bottom: 5px;
+  border: 2px solid #ffc107;
 }
 
 #create-button:hover {
@@ -13,19 +17,21 @@ body {
 
 .box {
   width: 90%;
+  height: 15vh;
   border: 2px solid #607d8b;
+  background-color: #fff;
+  margin: 5px;
 }
 
 .box a {
-  text-decoration: underline;
+  text-decoration: none;
+  border-bottom: 2px solid #ffc107;
   color: #455a64;
-  text-decoration-color: #ffc107;
 }
 
 .box a:hover {
-  text-decoration: underline;
   color: #607d8b;
-  text-decoration-color: #f2f4f4;
+  border-bottom: 2px solid #f2f4f4;
 }
 
 .box h1 {
@@ -34,23 +40,43 @@ body {
 }
 
 .form {
+  height: 40vh;
+  padding: 5px 10px 5px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   background-color: #455a64;
 }
 
 .form-input {
+  height: 6vh;
   width: 90%;
+  font-size: 24px;
+  font-weight: 200;
+  letter-spacing: 2.5px;
 }
 
 .list {
   background-color:#cfd8dc;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 5px;
 }
 
 .logo {
-  height: 50px;
+  height: 24px;
+  margin: 0 7px 0 7px;
 }
 
 .title {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 800;
   color: #fff;
+  display: flex;
+  letter-spacing: 1.5px;
+  margin-top: 10px;
 }
