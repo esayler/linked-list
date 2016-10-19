@@ -1,5 +1,5 @@
 var count = 0;
-
+updateCounters();
 // create bookmark
 // TODO: get user input on click and enter key
 $('#create-button').on('click', function() {
@@ -28,6 +28,7 @@ $('#create-button').on('click', function() {
 // each bookmark should have a "Mark as Read" button
 $(document).on('click', '.read-button', function() {
   $(this).parents('article').toggleClass('read');
+  updateCounters();
 });
 
 
@@ -35,17 +36,25 @@ $(document).on('click', '.read-button', function() {
 //$('.delete-button').on('click', function() {
 $(document).on('click', '.delete-button', function() {
   $(this).parents('article').remove();
+  updateCounters();
 });
 
 // clear all read bookmarks
 
 $(document).on('click', '#clear-button', function() {
   $('.list').children('.read').remove()
+  updateCounters();
 });
 
-$('bookmark-title')
+function updateCounters() {
+  var numTotal = $('.box').length;
+  var numRead = $('.read').length;
+  var numUnread = numTotal - numRead;
 
-$('bookmark-url')
+  $('#num-total').text(numTotal);
 
+  $('#num-read').text(numRead);
 
-// bookmark list
+  $('#num-unread').text(numUnread);
+
+};
