@@ -37,8 +37,6 @@ inputFields.keypress(function(event){
        }
 });
 
-// create bookmark
-// TODO: get user input on click and enter key
 $('#create-button').on('click', function() {
   var titleText = titleForm.val();
   var urlText = urlForm.val();
@@ -72,8 +70,6 @@ $('#create-button').on('click', function() {
 });
 
 function urlIsValid(titleText, urlText) {
-  //var titleFormContent = $('#title-form').val();
-  //var urlFormContent = $('#url-form').val();
   var titleFormContent = titleText;
   var urlFormContent = urlText;
 
@@ -93,22 +89,15 @@ function urlPrepend(urlString) {
   }
 }
 
-
-// each bookmark should have a "Mark as Read" button
 $(document).on('click', '.read-button', function() {
   $(this).parents('article').toggleClass('read');
   updateCounters();
 });
 
-
-// each bookmark should have a "Remove" button
-//$('.delete-button').on('click', function() {
 $(document).on('click', '.delete-button', function() {
   $(this).parents('article').remove();
   updateCounters();
 });
-
-// clear all read bookmarks
 
 $(document).on('click', '#clear-button', function() {
   $('.list').children('.read').remove()
@@ -130,9 +119,7 @@ function updateCounters() {
 function disableClearButton (numRead) {
   if (numRead > 0) {
     $('#clear-button').prop( "disabled", false );
-    //$('#clear-button').attr('disabled', false);
   } else {
     $('#clear-button').prop( "disabled", true );
-    //$('#clear-button').attr('disabled', true);
   }
 }
