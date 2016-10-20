@@ -32,7 +32,10 @@ inputFields.on('blur keyup', function () {
 $('#create-button').on('click', function() {
   var titleText = titleForm.val();
   var urlText = urlForm.val();
-  if (inputIsValid()) {
+
+
+  if (urlIsValid(titleText, urlText)) {
+    urlText = urlPrepend(urlText);
     titleForm.val('');
     urlForm.val('');
     count++;
@@ -52,22 +55,33 @@ $('#create-button').on('click', function() {
                             </button>\
                           </div>\
                        </article>');
+  } else {
+    displayError('URL is not valid!');
   }
 });
 
-function inputIsValid() {
-  var titleFormContent = $('#title-form').val();
-  var urlFormContent = $('#url-form').val();
-  if ( titleFormContent.length === 0 || (/^(\s)*$/g).test(titleFormContent) ) {
-    displayError('No title specified');
-    return false;
-  } else if ( urlFormContent.length === 0 || (/^(\s)*$/g).test(urlFormContent) ) {
-    displayError('No URL specified');
-    return false;
-  } else {
+function urlIsValid(titleText, urlText) {
+  //var titleFormContent = $('#title-form').val();
+  //var urlFormContent = $('#url-form').val();
+  var titleFormContent = titleText;
+  var urlFormContent = urlText;
+
+  if (/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/ig.test(urlFormContent)) {
     return true;
+  } else {
+    return false;
   }
 };
+
+function urlPrepend(urlString) {
+
+  if (/^(http:\/\/).*|(https:\/\/).*|(www.).*$/g.test(urlString)) {
+    return urlString;
+  } else {
+    return 'http://www.' + urlString;
+  }
+}
+
 
 // each bookmark should have a "Mark as Read" button
 $(document).on('click', '.read-button', function() {
