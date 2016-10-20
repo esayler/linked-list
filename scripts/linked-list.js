@@ -1,3 +1,7 @@
+var totalCounter = $('#num-total');
+var readCounter = $('#num-read');
+var unreadCounter = $('#num-unread');
+
 updateCounters();
 
 var count = 0;
@@ -23,8 +27,8 @@ inputFields.on('blur keyup', function () {
 
   var titleString = $('#title-form').val();
   var urlString = $('#url-form').val();
-  var titleEmpty = titleString.length === 0 || (/^(\s)*$/g).test(titleString);
-  var urlEmpty = urlString.length === 0 || (/^(\s)*$/g).test(urlString);
+  var titleEmpty = stringIsEmpty(titleString);
+  var urlEmpty = stringIsEmpty(urlString);
 
   if (urlEmpty || titleEmpty) {
     createButton.attr('disabled', true);
@@ -32,6 +36,10 @@ inputFields.on('blur keyup', function () {
     createButton.attr('disabled', false);
   }
 });
+
+function stringIsEmpty(string) {
+  return string.length === 0 || (/^(\s)*$/g).test(string);
+}
 
 inputFields.keypress(function(event){
   if (event.which == 13) {
@@ -86,12 +94,8 @@ function urlIsValid(titleText, urlText) {
   return /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/ig.test(urlText);
 };
 
-function urlPrepend(urlString) {
-  if (/^(http:\/\/).*|(https:\/\/).*|(www.).*$/g.test(urlString)) {
-    return urlString;
-  } else {
-    return 'http://www.' + urlString;
-  }
+function urlPrepend(url) {
+  return /^(http(s)?:\/\/).*|(www.).*$/g.test(url) ? url : 'http://www.' + url;
 }
 
 $('.list').on('click', '.read-button', function() {
@@ -114,9 +118,9 @@ function updateCounters() {
   var numRead = $('.read').length;
   var numUnread = numTotal - numRead;
 
-  $('#num-total').text(numTotal);
-  $('#num-read').text(numRead);
-  $('#num-unread').text(numUnread);
+  totalCounter.text(numTotal);
+  readCounter.text(numRead);
+  unreadCounter.text(numUnread);
 
   updateClearButtonStatus(numRead);
 };
