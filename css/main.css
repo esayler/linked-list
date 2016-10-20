@@ -18,7 +18,8 @@ hr {
   font-size: 16px;
   /*text-shadow: 1px 1px 1px black;*/
   width: 92.5%;
-  border: 2px solid #ffc107;
+  border: 2px solid #ffc107
+  /*margin: 20px auto;*/
 }
 
 #clear-button:hover,
@@ -66,6 +67,7 @@ hr {
   /*border-bottom: 4px solid #f2f4f4;*/
 }
 
+
 button:focus {
   outline:0;
 }
@@ -88,33 +90,49 @@ div button {
 }
 
 .form {
-  height: 40vh;
-  padding: 5px 10px 5px 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  height: auto;
+  /*margin: 20px 20px;*/
+  /*padding: 5px 10px 5px 10px;*/
+  text-align: center;
+  /*position: fixed;*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*justify-content: space-around;*/
+  /*padding: auto;*/
+  /*align-items: center;*/
   background-color: #455a64;
+  margin: 20px;
 }
 
 .form-input {
   height: 6vh;
-  width: 90%;
+  width: 95%;
   font-size: 24px;
   font-weight: 400;
   letter-spacing: 2.5px;
-  padding-left: 10px;
+  margin: 10px;
+  /*align-items: center;*/
+  /*position: fixed;*/
+  padding: 0 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .list {
   background-color:#cfd8dc;
+  padding: 5px;
   /*height: 60vh;*/
   /*margin-top: -20px;*/
   /*display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;*/
-  padding-top: 5px;
+  /*padding-top: 5px;*/
+  height: auto;
+  /*padding-bottom: 5px;*/
+  /*min-height: 100vh;
+  max-height: 100%;*/
 }
 
 .logo {
@@ -149,7 +167,6 @@ div button {
   display: flex;
   justify-content: center;
   letter-spacing: 1.5px;
-  margin-top: 10px;
 }
 
 .counter {
@@ -189,10 +206,10 @@ input:focus{
 }
 
 .error-msg {
-  position: relative;
-  width: 90%;
+  /*width: 90%;*/
   opacity: 0;
-  color: #D8000C;
+  color: #ff5185;
+  text-shadow: black -1px 1px 1px;
   text-align: center;
 }
 @media screen and (min-width: 700px) {
@@ -202,19 +219,20 @@ input:focus{
     border-bottom: 2px solid #ffc107;
   }*/
 
-  body {
-    display: flex;
-  }
-
   .form {
     width: 50%;
     height: 100vh;
-    align-items: center;
-    justify-content: center;
+    margin: auto;
+    position: fixed;
+    margin-top: 25vh;
   }
 
   .form-input{
-    margin: 23px 0 23px 0;
+    /*width: 90%;*/
+
+    margin: 23px;
+    width: 90%;
+
   }
 
   .hov-line:hover {
@@ -225,7 +243,14 @@ input:focus{
 
   .list {
     width: 50%;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: auto;
+    position: absolute;
+    right: 0;
+  }
+
+  .box {
+    /*width: 90%;*/
   }
 
   .logo {
