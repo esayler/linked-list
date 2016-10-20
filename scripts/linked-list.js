@@ -1,18 +1,26 @@
+$('.error-msg').hide()
+
 var count = 0;
+
 updateCounters();
+
 var titleForm = $('#title-form');
 var urlForm = $('#url-form');
 var inputFields = $('#url-form, #title-form');
 var createButton = $('#create-button');
+var clearButton = $('#clear-button');
 
-//$('#create-button').attr('disabled', true);
 $('#clear-button').attr('disabled', true);
+$('#create-button').attr('disabled', true);
 
-function displayError(errorMessage) {
-  $('.error-msg').text(errorMessage);
+function displayError() {
+//function displayError(errorMessage) {
+  //$('.error-msg').text(errorMessage);
+  $('.error-msg').fadeIn(100);
 }
 
 inputFields.on('blur keyup', function () {
+  $('.error-msg').fadeOut(1600)
   var titleFormContent = $('#title-form').val();
   var urlFormContent = $('#url-form').val();
   var titleEmpty = titleFormContent.length === 0 || (/^(\s)*$/g).test(titleFormContent)
@@ -40,23 +48,24 @@ $('#create-button').on('click', function() {
     urlForm.val('');
     count++;
     updateCounters();
+    $('#create-button').attr('disabled', true);
 
     $('.list').append('<article class="box" id="bookmark-' + count + '">\
-                         <h1 class="bookmark-title"> ' + titleText + '</h1>\
+                         <h1 class="bookmark-title"> ' + titleText + '</h1><hr>\
                            <a class=".bookmark-url" href="' + urlText + '">\
-                             <p>' + urlText + '</p>\
-                           </a>\
+                             <p><span class="hov-line">' + urlText + '</span></p>\
+                           </a><hr>\
                          <div class="bookmark-buttons">\
                             <button type="button" name="Read" class="read-button">\
-                              <p>Read</p>\
+                              <p><span class="hov-line">Read</span></p>\
                             </button>\
                             <button type="button" name="Delete" class="delete-button">\
-                               <p>Delete</p>\
+                               <p><span class="hov-line">Delete</span></p>\
                             </button>\
                           </div>\
                        </article>');
   } else {
-    displayError('URL is not valid!');
+    displayError();
   }
 });
 
@@ -118,8 +127,10 @@ function updateCounters() {
 
 function disableClearButton (numRead) {
   if (numRead > 0) {
-    $('#clear-button').attr('disabled', false);
+    $('#clear-button').prop( "disabled", false );
+    //$('#clear-button').attr('disabled', false);
   } else {
-    $('#clear-button').attr('disabled', true);
+    $('#clear-button').prop( "disabled", true );
+    //$('#clear-button').attr('disabled', true);
   }
 }

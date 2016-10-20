@@ -16,15 +16,16 @@ hr {
   color: #fff;
   font-weight: 800;
   font-size: 16px;
+  /*text-shadow: 1px 1px 1px black;*/
   width: 92.5%;
   border: 2px solid #ffc107;
 }
 
-#clear-button:hover, #create-button:hover {
+#clear-button:hover,
+#create-button:hover {
   background-color: #ffd773;
   cursor: pointer;
 }
-
 
 
 .box {
@@ -65,13 +66,17 @@ hr {
   /*border-bottom: 4px solid #f2f4f4;*/
 }
 
+button:focus {
+  outline:0;
+}
+
 .delete-button {
   float: right;
 }
 
-/*.box div {
-  border-top: 4px solid #f2f4f4;
-}*/
+.box div {
+  /*border-top: 4px solid #f2f4f4;*/
+}
 
 div button {
   font-size: 16px;
@@ -148,7 +153,47 @@ div button {
   display: inline-block;
 }
 
-@media screen and (min-width: 500px) {
+
+#create-button:disabled, #clear-button:disabled,
+#create-button[disabled]:active, #clear-button[disabled]:active,
+#create-button[disabled]:hover, #clear-button[disabled]:hover {
+  background-color:#dddddd;
+  color: #999999;
+  cursor: inherit;
+  border: 2px solid #dddddd;
+}
+
+input:focus{
+  outline: none;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #D0D2D3;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #D0D2D3;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #D0D2D3;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #D0D2D3;
+}
+
+.counters {
+  color: white;
+  margin: 10px;
+}
+
+.error-msg {
+  position: relative;
+  width: 90%;
+  height: 20px;
+  /*height: px;*/
+  color: #D8000C;
+  text-align: center;
+}
+@media screen and (min-width: 700px) {
 
   /*.box a:hover {
     color: #607d8b;
