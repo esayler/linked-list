@@ -1,7 +1,4 @@
-//$('.error-msg').hide()
-
 var count = 0;
-
 updateCounters();
 
 var titleForm = $('#title-form');
@@ -14,15 +11,14 @@ $('#clear-button').attr('disabled', true);
 $('#create-button').attr('disabled', true);
 
 function displayError() {
-//function displayError(errorMessage) {
-  //$('.error-msg').text(errorMessage);
   $('.error-msg').css('opacity', '1');
+  $('.error-msg').css('transition-duration', '.5s');
 }
 
 inputFields.on('blur keyup', function () {
-  //$('.error-msg').fadeOut(1600)
   $('.error-msg').css('opacity', '0');
   $('.error-msg').css('transition-duration', '.5s');
+
   var titleFormContent = $('#title-form').val();
   var urlFormContent = $('#url-form').val();
   var titleEmpty = titleFormContent.length === 0 || (/^(\s)*$/g).test(titleFormContent)
@@ -35,7 +31,11 @@ inputFields.on('blur keyup', function () {
   }
 });
 
-
+inputFields.keypress(function(event){
+       if (event.which == 13) {
+         $('#create-button').click();
+       }
+});
 
 // create bookmark
 // TODO: get user input on click and enter key
