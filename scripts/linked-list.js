@@ -1,28 +1,30 @@
-var count = 0;
 updateCounters();
 
+var count = 0;
 var titleForm = $('#title-form');
+var list = $('.list')
 var urlForm = $('#url-form');
 var inputFields = $('#url-form, #title-form');
 var createButton = $('#create-button');
 var clearButton = $('#clear-button');
+var errorMsg = $('.error-msg');
 
-$('#clear-button').attr('disabled', true);
-$('#create-button').attr('disabled', true);
+clearButton.attr('disabled', true);
+createButton.attr('disabled', true);
 
 function displayError() {
-  $('.error-msg').css('opacity', '1');
-  $('.error-msg').css('transition-duration', '.5s');
-}
+  errorMsg.css('opacity', '1');
+  errorMsg.css('transition-duration', '.5s');
+};
 
 inputFields.on('blur keyup', function () {
-  $('.error-msg').css('opacity', '0');
-  $('.error-msg').css('transition-duration', '.5s');
+  errorMsg.css('opacity', '0');
+  errorMsg.css('transition-duration', '.5s');
 
-  var titleFormContent = $('#title-form').val();
-  var urlFormContent = $('#url-form').val();
-  var titleEmpty = titleFormContent.length === 0 || (/^(\s)*$/g).test(titleFormContent)
-  var urlEmpty = urlFormContent.length === 0 || (/^(\s)*$/g).test(urlFormContent)
+  var titleString = $('#title-form').val();
+  var urlString = $('#url-form').val();
+  var titleEmpty = titleString.length === 0 || (/^(\s)*$/g).test(titleString);
+  var urlEmpty = urlString.length === 0 || (/^(\s)*$/g).test(urlString);
 
   if (urlEmpty || titleEmpty) {
     createButton.attr('disabled', true);
@@ -32,56 +34,59 @@ inputFields.on('blur keyup', function () {
 });
 
 inputFields.keypress(function(event){
-       if (event.which == 13) {
-         $('#create-button').click();
-       }
+  if (event.which == 13) {
+    $('#create-button').click();
+  }
 });
 
-$('#create-button').on('click', function() {
-  var titleText = titleForm.val();
-  var urlText = urlForm.val();
+function clearFormInput() {
+  titleForm.val('');
+  urlForm.val('');
+};
 
+function getFormInput() {
+  return { titleText: titleForm.val(), urlText: urlForm.val() };
+};
+
+$('#create-button').on('click', function() {
+  var formInput = getFormInput();
+  var titleText = formInput.titleText;
+  var urlText = formInput.urlText;
 
   if (urlIsValid(titleText, urlText)) {
-    urlText = urlPrepend(urlText);
-    titleForm.val('');
-    urlForm.val('');
     count++;
+    var validURL = urlPrepend(urlText);
+    clearFormInput();
     updateCounters();
-    $('#create-button').attr('disabled', true);
-
-    $('.list').append('<article class="box" id="bookmark-' + count + '">\
-                         <h1 class="bookmark-title"> ' + titleText + '</h1><hr>\
-                           <a class=".bookmark-url" href="' + urlText + '">\
-                             <p><span class="hov-line">' + urlText + '</span></p>\
-                           </a><hr>\
-                         <div class="bookmark-buttons">\
-                            <button type="button" name="Read" class="read-button">\
-                              <p><span class="hov-line">Read</span></p>\
-                            </button>\
-                            <button type="button" name="Delete" class="delete-button">\
-                               <p><span class="hov-line">Delete</span></p>\
-                            </button>\
-                          </div>\
-                       </article>');
+    addCardToList(titleText, validURL);
+    createButton.attr('disabled', true);
   } else {
     displayError();
   }
 });
 
-function urlIsValid(titleText, urlText) {
-  var titleFormContent = titleText;
-  var urlFormContent = urlText;
+function addCardToList(titleText, validURL) {
+  list.append('<article class="box" id="bookmark-' + count + '">\
+                 <h1 class="bookmark-title"> ' + titleText + '</h1><hr>\
+                   <a class=".bookmark-url" href="' + validURL + '">\
+                     <p><span class="hov-line">' + validURL + '</span></p>\
+                   </a><hr>\
+                  <div class="bookmark-buttons">\
+                    <button type="button" name="Read" class="read-button">\
+                      <p><span class="hov-line">Read</span></p>\
+                    </button>\
+                    <button type="button" name="Delete" class="delete-button">\
+                      <p><span class="hov-line">Delete</span></p>\
+                    </button>\
+                  </div>\
+               </article>');
+};
 
-  if (/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/ig.test(urlFormContent)) {
-    return true;
-  } else {
-    return false;
-  }
+function urlIsValid(titleText, urlText) {
+  return /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/ig.test(urlText);
 };
 
 function urlPrepend(urlString) {
-
   if (/^(http:\/\/).*|(https:\/\/).*|(www.).*$/g.test(urlString)) {
     return urlString;
   } else {
@@ -89,17 +94,17 @@ function urlPrepend(urlString) {
   }
 }
 
-$(document).on('click', '.read-button', function() {
+$('.list').on('click', '.read-button', function() {
   $(this).parents('article').toggleClass('read');
   updateCounters();
 });
 
-$(document).on('click', '.delete-button', function() {
+$('.list').on('click', '.delete-button', function() {
   $(this).parents('article').remove();
   updateCounters();
 });
 
-$(document).on('click', '#clear-button', function() {
+$('.form').on('click', '#clear-button', function() {
   $('.list').children('.read').remove()
   updateCounters();
 });
@@ -113,13 +118,13 @@ function updateCounters() {
   $('#num-read').text(numRead);
   $('#num-unread').text(numUnread);
 
-  disableClearButton(numRead);
+  updateClearButtonStatus(numRead);
 };
 
-function disableClearButton (numRead) {
+function updateClearButtonStatus (numRead) {
   if (numRead > 0) {
     $('#clear-button').prop( "disabled", false );
   } else {
     $('#clear-button').prop( "disabled", true );
   }
-}
+};
