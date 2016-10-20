@@ -12,58 +12,69 @@
 
     <section class="form">
       <h1 class="title">
-        <p>Linked</p><img src="./images/linked-list-logo.svg" class="logo" /><p>List</p>
+        Linked <span class="logo"><img src="./images/linked-list-logo.svg" /> </span>List
       </h1>
       <input type="text" name="bookmark-title" placeholder="Website Title" id="title-form" class="form-input">
       <input type="url" name="bookmark-url" placeholder="Website URL" id="url-form" class="form-input">
       <button type="button" name="create-button" id="create-button" class="form-input"><p>Enter</p></button>
       <button type="button" name="clear-button" id="clear-button" class="form-input"><p>Clear All Read</p></button>
+      <section class="counters">
+        <div id="total-counter" class="counter">
+          <p>Total: <span id="num-total"> </span></p>
+        </div>
+        <div id="read-counter" class="counter">
+          <p>Read: <span id="num-read"> </span></p>
+        </div>
+        <div id="unread-counter" class="counter">
+          <p>Unread: <span id="num-unread"> </span></p>
+        </div>
+      </section>
     </section>
 
 
-    <section class="counters">
-      <div id="total-counter" class="counter">
-        <p>Total: <span id="num-total"> </span></p>
-      </div>
-      <div id="read-counter" class="counter">
-        <p>Read: <span id="num-read"> </span></p>
-      </div>
-      <div id="unread-counter" class="counter">
-        <p>Unread: <span id="num-unread"> </span></p>
-      </div>
-    </section>
+
     <section class="list">
-
       <article class="box" id="bookmark-0">
         <h1>The Website Title</h1>
         <hr>
-        <a href="http://bussayler.com"><p>www.thewebsiteurl.com</p></a>
+        <a href="http://bussayler.com"><p><span class="hov-line">www.thewebsiteurl.com</span></p></a>
         <hr>
         <div class="bookmark-buttons">
-          <button type="button" name="Read" class="read-button">Read</button>
-          <button type="button" name="Delete" class="delete-button">Delete</button>
+          <button type="button" name="Read" class="read-button"><span class="hov-line">Read</span></button>
+          <button type="button" name="Delete" class="delete-button"><span class="hov-line">Delete</span></button>
         </div>
       </article>
 
       <article class="box" id="bookmark-1">
         <h1>The Website Title</h1>
         <hr>
-        <a href="http://bussayler.com"><p>www.thewebsiteurl.com</p></a>
+        <a href="http://bussayler.com"><p><span class="hov-line">www.thewebsiteurl.com</span></p></a>
         <hr>
         <div class="bookmark-buttons">
-          <button type="button" name="Read" class="read-button"><p>Read</p></button>
-          <button type="button" name="Delete" class="delete-button"><p>Delete</p></button>
+          <button type="button" name="Read" class="read-button"><span class="hov-line">Read</span></button>
+          <button type="button" name="Delete" class="delete-button"><span class="hov-line">Delete</span></button>
         </div>
       </article>
 
       <article class="box" id="bookmark-2">
         <h1>The Website Title</h1>
         <hr>
-        <a href="http://bussayler.com"><p>www.thewebsiteurl.com</p></a>
+        <a href="http://bussayler.com"><p><span class="hov-line">www.thewebsiteurl.com</span></p></a>
         <hr>
         <div class="bookmark-buttons">
-          <button type="button" name="Read" class="read-button"><p>Read</p></button>
-          <button type="button" name="Delete" class="delete-button"><p>Delete</p></button>
+          <button type="button" name="Read" class="read-button"><span class="hov-line">Read</span></button>
+          <button type="button" name="Delete" class="delete-button"><span class="hov-line">Delete</span></button>
+        </div>
+      </article>
+
+      <article class="box" id="bookmark-3">
+        <h1>The Website Title</h1>
+        <hr>
+        <a href="http://bussayler.com"><p><span class="hov-line">www.thewebsiteurl.com</span></p></a>
+        <hr>
+        <div class="bookmark-buttons">
+          <button type="button" name="Read" class="read-button"><span class="hov-line">Read</span></button>
+          <button type="button" name="Delete" class="delete-button"><span class="hov-line">Delete</span></button>
         </div>
       </article>
 

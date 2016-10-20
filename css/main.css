@@ -5,24 +5,27 @@ body {
 }
 
 hr {
-  width: 95%;
+  width: 98%;
   size: 1px;
   color: #cfd8dc;
   background-color: #cfd8dc;
 }
 
-#create-button {
+#clear-button, #create-button {
   background-color: #ffc107;
   color: #fff;
   font-weight: 800;
   font-size: 16px;
-  margin-bottom: 5px;
+  width: 92.5%;
   border: 2px solid #ffc107;
 }
 
-#create-button:hover {
+#clear-button:hover, #create-button:hover {
   background-color: #ffd773;
+  cursor: pointer;
 }
+
+
 
 .box {
   width: 90%;
@@ -40,6 +43,7 @@ hr {
 .box a {
   text-decoration: none;
   font-size: 18px;
+  width: auto;
   color: #607d8b;
   margin: 10px 0 10px 5px;
 }
@@ -53,6 +57,7 @@ hr {
   color: #455a64;
   font-weight: 800;
   font-size: 22px;
+  padding-left: 5px;
   /*border-bottom: 4px solid #f2f4f4;*/
 }
 
@@ -73,6 +78,8 @@ div button {
   font-weight: 400;
   color: #455a64;
   position: relative;
+  border: none;
+  background-color: #fff;
 }
 
 .form {
@@ -109,6 +116,24 @@ div button {
   height: 24px;
   margin: 0 7px 0 7px;
 }
+.read {
+  background-color: #f2f4f4;
+}
+.read .read-button {
+  color: #f05128;
+  border: none;
+  background-color: #f2f4f4;
+}
+
+.read .delete-button {
+  background-color: #f2f4f4;
+  border-bottom: 2px solid #cfd8dc;
+}
+
+.read .box a {
+  color: #607d8b;
+  border-bottom: 2px solid #cfd8dc;
+}
 
 .title {
   font-size: 24px;
@@ -118,3 +143,50 @@ div button {
   letter-spacing: 1.5px;
   margin-top: 10px;
 }
+
+.counter {
+  display: inline-block;
+}
+
+@media screen and (min-width: 500px) {
+
+  /*.box a:hover {
+    color: #607d8b;
+    border-bottom: 2px solid #ffc107;
+  }*/
+
+  body {
+    display: flex;
+  }
+
+  .form {
+    width: 50%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-input{
+    margin: 23px 0 23px 0;
+  }
+
+  .hov-line:hover {
+    color: #607d8b;
+    border-bottom: 2px solid #ffc107;
+    cursor: pointer;
+  }
+
+  .list {
+    width: 50%;
+    height: 100vh;
+  }
+
+  .logo {
+    height: 70px;
+    width: 70px;
+  }
+
+  .title {
+    font-size: 46px;
+
+  }
