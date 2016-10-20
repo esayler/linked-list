@@ -1,7 +1,9 @@
 var count = 0;
 updateCounters();
-var title = $('#title-form');
-var url = $('#url-form');
+var titleForm = $('#title-form');
+var urlForm = $('#url-form');
+var inputFields = $('#url-form, #title-form');
+var createButton = $('#create-button');
 
 //$('#create-button').attr('disabled', true);
 $('#clear-button').attr('disabled', true);
@@ -10,14 +12,29 @@ function displayError(errorMessage) {
   $('.error-msg').text(errorMessage);
 }
 
+inputFields.on('blur keyup', function () {
+  var titleFormContent = $('#title-form').val();
+  var urlFormContent = $('#url-form').val();
+  var titleEmpty = titleFormContent.length === 0 || (/^(\s)*$/g).test(titleFormContent)
+  var urlEmpty = urlFormContent.length === 0 || (/^(\s)*$/g).test(urlFormContent)
+
+  if (urlEmpty || titleEmpty) {
+    createButton.attr('disabled', true);
+  } else if (!urlEmpty && !titleEmpty) {
+    createButton.attr('disabled', false);
+  }
+});
+
+
+
 // create bookmark
 // TODO: get user input on click and enter key
 $('#create-button').on('click', function() {
-  var titleText = title.val();
-  var urlText = url.val();
+  var titleText = titleForm.val();
+  var urlText = urlForm.val();
   if (inputIsValid()) {
-    title.val('');
-    url.val('');
+    titleForm.val('');
+    urlForm.val('');
     count++;
     updateCounters();
 
@@ -39,8 +56,8 @@ $('#create-button').on('click', function() {
 });
 
 function inputIsValid() {
-  var titleFormContent = $('#title-form').val()
-  var urlFormContent = $('#url-form').val()
+  var titleFormContent = $('#title-form').val();
+  var urlFormContent = $('#url-form').val();
   if ( titleFormContent.length === 0 || (/^(\s)*$/g).test(titleFormContent) ) {
     displayError('No title specified');
     return false;
@@ -51,8 +68,6 @@ function inputIsValid() {
     return true;
   }
 };
-
-
 
 // each bookmark should have a "Mark as Read" button
 $(document).on('click', '.read-button', function() {
