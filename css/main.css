@@ -26,6 +26,7 @@ hr {
 }
 
 
+
 .box {
   width: 90%;
   height: 125px;
@@ -115,6 +116,24 @@ div button {
   height: 24px;
   margin: 0 7px 0 7px;
 }
+.read {
+  background-color: #f2f4f4;
+}
+.read .read-button {
+  color: #f05128;
+  border: none;
+  background-color: #f2f4f4;
+}
+
+.read .delete-button {
+  background-color: #f2f4f4;
+  border-bottom: 2px solid #cfd8dc;
+}
+
+.read .box a {
+  color: #607d8b;
+  border-bottom: 2px solid #cfd8dc;
+}
 
 .title {
   font-size: 24px;
@@ -135,8 +154,39 @@ div button {
     color: #607d8b;
     border-bottom: 2px solid #ffc107;
   }*/
+
+  body {
+    display: flex;
+  }
+
+  .form {
+    width: 50%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-input{
+    margin: 23px 0 23px 0;
+  }
+
   .hov-line:hover {
     color: #607d8b;
     border-bottom: 2px solid #ffc107;
     cursor: pointer;
+  }
+
+  .list {
+    width: 50%;
+    height: 100vh;
+  }
+
+  .logo {
+    height: 70px;
+    width: 70px;
+  }
+
+  .title {
+    font-size: 46px;
+
   }
