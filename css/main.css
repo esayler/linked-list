@@ -188,8 +188,7 @@ input:focus{
 .error-msg {
   position: relative;
   width: 90%;
-  height: 20px;
-  /*height: px;*/
+  opacity: 0;
   color: #D8000C;
   text-align: center;
 }
