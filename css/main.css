@@ -118,7 +118,8 @@ div button {
 }
 
 .logo {
-  height: 24px;
+  height: 40px;
+  width: 40px;
   margin: 0 7px 0 7px;
 }
 .read {
@@ -141,10 +142,12 @@ div button {
 }
 
 .title {
+  width: 100%;
   font-size: 24px;
   font-weight: 800;
   color: #fff;
   display: flex;
+  justify-content: center;
   letter-spacing: 1.5px;
   margin-top: 10px;
 }
