@@ -17,12 +17,28 @@ hr {
   font-weight: 800;
   font-size: 16px;
   width: 92.5%;
+  transition-property: background-color, color, border;
+  transition-duration: 1s, 1s, 1s;
+  transition-timing-function: ease-in-out;
 }
 
 #clear-button:hover,
 #create-button:hover {
   background-color: #ffd773;
   cursor: pointer;
+  border: 2px solid #ffd773;
+  transition-property: background-color, border;
+  transition-duration: .25s, .25s;
+  transition-timing-function: ease-in-out;
+}
+
+#clear-button:active,
+#create-button:active {
+  background-color: #ff9c07;
+  border: #ff9c07;
+  transition-property: none;
+  /*transition-duration: .25s;*/
+  /*transition-timing-function: ease-in-out;*/
 }
 
 .box {
@@ -36,6 +52,8 @@ hr {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  transition-property: background-color;
+  transition-duration: 1s;
 }
 
 .box a {
@@ -55,6 +73,7 @@ hr {
 
 button:focus {
   outline:0;
+  filter: opacity(90%);
 }
 
 .delete-button {
@@ -68,6 +87,7 @@ div button {
   position: relative;
   border: none;
   background-color: #fff;
+  text-decoration: none;
 }
 
 .form {
@@ -104,10 +124,18 @@ div button {
 .read {
   background-color: #f2f4f4;
 }
+
 .read .read-button {
   color: #f05128;
   border: none;
   background-color: #f2f4f4;
+}
+
+.read-button, .delete-button {
+  text-decoration: none;
+  border-bottom: none;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
 }
 
 .read .delete-button {
@@ -135,6 +163,10 @@ div button {
   display: inline-block;
 }
 
+.hov-line {
+  /*transition-property: all;*/
+  /*transition-duration: 1s*/
+}
 
 #create-button:disabled, #clear-button:disabled,
 #create-button[disabled]:active, #clear-button[disabled]:active,
@@ -169,9 +201,19 @@ input:focus{
 
 .error-msg {
   opacity: 0;
-  color: #ff5185;
-  text-shadow: black -1px 1px 1px;
+  width: 90%;
+  color: white;
+  text-shadow: black -1px 1px .5px;
   text-align: center;
+  padding: 8px;
+  background-color: #ff1744;
+  margin: 0 auto;
+  display: inline-block;
+  border-radius: 5px;
+  border: 1px solid #ef5350;
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: ease-in-out;
 }
 
 .hov-line:hover {
