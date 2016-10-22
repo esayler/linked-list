@@ -1,3 +1,6 @@
+html {
+  cursor: pointer;
+}
 body {
   background-color: #455a64;
   font-family: 'Open Sans', sans-serif;
