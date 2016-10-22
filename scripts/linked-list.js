@@ -16,14 +16,19 @@ var errorMsg = $('.error-msg');
 clearButton.attr('disabled', true);
 createButton.attr('disabled', true);
 
+titleForm.focus();
+
 function displayError() {
-  errorMsg.css('opacity', '1');
+  errorMsg.css('opacity', '.85');
   errorMsg.css('transition-duration', '.5s');
 };
 
-inputFields.on('blur keyup', function () {
+function hideError() {
   errorMsg.css('opacity', '0');
   errorMsg.css('transition-duration', '.5s');
+};
+
+inputFields.on('blur keypress', function () {
 
   var titleString = $('#title-form').val();
   var urlString = $('#url-form').val();
@@ -33,6 +38,7 @@ inputFields.on('blur keyup', function () {
   if (urlEmpty || titleEmpty) {
     createButton.attr('disabled', true);
   } else if (!urlEmpty && !titleEmpty) {
+    hideError();
     createButton.attr('disabled', false);
   }
 });
@@ -41,6 +47,7 @@ function stringIsEmpty(string) {
   return string.length === 0 || (/^(\s)*$/g).test(string);
 }
 
+// click the create-button when user hits enter key
 inputFields.keypress(function(event){
   if (event.which == 13) {
     $('#create-button').click();
@@ -68,6 +75,8 @@ $('#create-button').on('click', function() {
     updateCounters();
     addCardToList(titleText, validURL);
     createButton.attr('disabled', true);
+    hideError();
+    titleForm.focus();
   } else {
     displayError();
   }
