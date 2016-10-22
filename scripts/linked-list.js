@@ -83,7 +83,7 @@ $('#create-button').on('click', function() {
 });
 
 function addCardToList(titleText, validURL) {
-  list.append('<article class="box" id="bookmark-' + count + '">\
+  var newCard = $('<article class="box" id="bookmark-' + count + '">\
                  <h1 class="bookmark-title"> ' + titleText + '</h1><hr>\
                    <a class=".bookmark-url" href="' + validURL + '">\
                      <p><span class="hov-line">' + validURL + '</span></p>\
@@ -96,7 +96,8 @@ function addCardToList(titleText, validURL) {
                       <p><span class="hov-line">Delete</span></p>\
                     </button>\
                   </div>\
-               </article>');
+               </article>').hide().fadeIn('fast');
+  list.append(newCard);
 };
 
 function urlIsValid(titleText, urlText) {
@@ -113,7 +114,10 @@ $('.list').on('click', '.read-button', function() {
 });
 
 $('.list').on('click', '.delete-button', function() {
-  $(this).parents('article').remove();
+  //$(this).parents('article').remove();
+  $(this).parents('.box').fadeOut('fast', function () {
+    $(this).remove();
+  });
   updateCounters();
 });
 
