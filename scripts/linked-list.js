@@ -72,8 +72,8 @@ $('#create-button').on('click', function() {
     count++;
     var validURL = urlPrepend(urlText);
     clearFormInput();
-    updateCounters();
     addCardToList(titleText, validURL);
+    updateCounters();
     createButton.attr('disabled', true);
     hideError();
     titleForm.focus();
